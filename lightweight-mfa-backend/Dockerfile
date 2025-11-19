@@ -1,7 +1,7 @@
 # -----------------------------
 # 1. Build stage
 # -----------------------------
-FROM gradle:8.14.3-jdk17-alpine AS builder
+FROM gradle:8.14.3-jdk21 AS builder
 
 WORKDIR /app
 
@@ -11,7 +11,7 @@ COPY gradle ./gradle
 COPY build.gradle .
 COPY settings.gradle .
 
-# Copy the source code
+# Copy source code
 COPY src ./src
 
 # Make gradlew executable
@@ -23,7 +23,7 @@ RUN ./gradlew clean build -x test
 # -----------------------------
 # 2. Runtime stage
 # -----------------------------
-FROM eclipse-temurin:17-jdk-alpine
+FROM eclipse-temurin:21-jdk-alpine
 
 WORKDIR /app
 
