@@ -19,7 +19,5 @@ RUN ./gradlew build -x test
 # Expose the port your app runs on
 EXPOSE 8080
 
-# Run the jar file
-COPY build/libs/demo-0.0.1-SNAPSHOT.jar demo.jar
-CMD ["java", "-jar", "demo.jar"]
-
+# Run the jar file from the build/libs folder
+CMD ["java", "-jar", "build/libs/demo-0.0.1-SNAPSHOT.jar"]
